@@ -1,0 +1,3 @@
+"0",""
+"0","totals2 %>% "
+"0","  summarise(mean = mean(total), n = n(), sd = sd(total))"

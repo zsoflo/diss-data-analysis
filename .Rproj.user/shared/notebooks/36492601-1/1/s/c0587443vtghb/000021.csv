@@ -1,0 +1,7 @@
+"0","dyad_counts_tib <- tibble("
+"0","  part = c('y7u_ypx', 'gkg_v1m', 'b6s_lp1', '3bn_n8t', 'sld_l9v'),"
+"0","  cats = c(4, 27, 16, 18, 19),"
+"0","  labels = c(part),"
+"0","  type = c('dyads', 'dyads', 'dyads', 'dyads', 'dyads')"
+"0",")"
+"0","dyad_counts_tib"

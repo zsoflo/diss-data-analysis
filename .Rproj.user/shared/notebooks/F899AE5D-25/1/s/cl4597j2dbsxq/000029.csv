@@ -1,0 +1,6 @@
+"0",""
+"0","d4 <- b6s_df[str_detect(b6s_df$target, ""blue""), ] %>% "
+"0","  group_by(target) %>% "
+"0","  view()"
+"0",""
+"0",""

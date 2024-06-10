@@ -1,0 +1,8 @@
+"0",""
+"0","solos_counts_list <- solos %>%"
+"0","  group_by(participant_id) %>%"
+"0","  drop_na(director_label) %>%"
+"0","  select(participant_id, director_label) %>%"
+"0","  distinct() %>%"
+"0","  count(participant_id)"
+"0","solos_counts_list"

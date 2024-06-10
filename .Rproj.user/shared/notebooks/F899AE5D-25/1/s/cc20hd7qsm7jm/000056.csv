@@ -1,0 +1,28 @@
+"0","sld <- read_csv(""/Users/zsofiahauk/Desktop/diss_data/dyad_data/di_sldmscswrq.csv"")"
+"2","Warning: [38;5;232mOne or more parsing issues, call `problems()` on your
+data frame for details, e.g.:
+  dat <- vroom(...)
+  problems(dat)[39m"
+"2","[1mRows: [22m[34m56[39m [1mColumns: [22m[34m27[39m"
+"2","[36m──[39m [1mColumn specification[22m [36m─────────────────────────────────[39m
+[1mDelimiter:[22m "",""
+[31mchr[39m (20): participant_id, partner_id, block, trial_cl...
+[32mdbl[39m  (6): trial_index, time_elapsed, target_pos, resp...
+[33mlgl[39m  (1): testing_check"
+"2","
+[36mℹ[39m Use `spec()` to retrieve the full column specification for this data.
+[36mℹ[39m Specify the column types or set `show_col_types = FALSE` to quiet this message."
+"0","sld_df <- tibble("
+"0","  target = sld$target,"
+"0","  foil1 = sld$foil1,"
+"0","  foil2 = sld$foil2,"
+"0","  foil3 = sld$foil3,"
+"0","  label = sld$director_label"
+"0",")"
+"0",""
+"0","sld_df <- sld_df %>% "
+"0","  select(target, foil1, foil2, foil3, label) %>% "
+"0","  group_by(target)"
+"0",""
+"0","filter(sld_df, target == ""yellow_blob"") |>"
+"0","  select(target, foil1, foil2, foil3, label)"

@@ -1,0 +1,6 @@
+"0","newbetter_longer <- newbetter_longer |>"
+"0","  mutate("
+"0","    Same_num = ifelse(label == ""SAME"", 1, 0),"
+"0","    Diff_num = ifelse(label == ""DIFF"", 1, 0)"
+"0","  )"
+"0","newbetter_longer"

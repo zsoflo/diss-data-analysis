@@ -1,0 +1,8 @@
+"0",""
+"0","newbetter_longer_dyads <- newbetter_wider_dyads |>"
+"0","  pivot_longer("
+"0","    cols = c(""i1_i2""),"
+"0","    names_to = ""comparison"","
+"0","    values_to = ""label"""
+"0","  )"
+"0","newbetter_longer_dyads"

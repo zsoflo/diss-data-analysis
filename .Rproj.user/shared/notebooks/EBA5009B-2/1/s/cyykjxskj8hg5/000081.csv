@@ -1,0 +1,5 @@
+"0",""
+"0","new_data_tibble_lp1 <- di_lp1je60a2r %>% "
+"0","  select(target, director_label)"
+"0",""
+"0","new_data_tibble_lp1"

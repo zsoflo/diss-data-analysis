@@ -1,0 +1,6 @@
+"0","solos_plot_tib <- ggplot("
+"0","  data = solos_counts_tib,"
+"0","  mapping = aes(x = solos_counts_tib$part, y = solos_counts_tib$cats)"
+"0",") +"
+"0","  geom_point()"
+"0","solos_plot_tib"

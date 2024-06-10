@@ -1,0 +1,8 @@
+"0","solos_counts_tib <- tibble("
+"0","  part = "
+"0","    c('cb2hlbmy82', 'm05le2pv5y', '78qejabkuq', '8jrul385v7', 'wpqewv43m0', '06vod7xnwc'),"
+"0","  cats = c(11, 16, 16, 16, 20, 20),"
+"0","  labels = c(part),"
+"0","  type = c('solo', 'solo', 'solo', 'solo', 'solo', 'solo')"
+"0",")"
+"0","solos_counts_tib"

@@ -1,0 +1,2 @@
+"0","solos_counts_tib %>% "
+"0","  summarise(mean = mean(cats), n = n(), sd = sd(cats))"

@@ -1,0 +1,6 @@
+"0","#| label: summarise the successful trials data"
+"0","totals <- tibble("
+"0","  pair = c('y7u_ypx', 'gkg_v1m', 'b6s_lp1', '3bn_n8t', 'sld_l9v'),"
+"0","  total = c(y7u_ypx_total, gkg_v1m_total, b6s_lp1_total, bn_n8t_total, sld_l9v_total)"
+"0",")"
+"0","totals"

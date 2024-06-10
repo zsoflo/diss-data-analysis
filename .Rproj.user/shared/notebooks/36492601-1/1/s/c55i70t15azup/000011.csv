@@ -1,0 +1,48 @@
+"0","p_diff_prop_dy <- diff_prop_dyads |>"
+"0","  ggplot(aes(comparison, diff_prop_dyads, colour = participant_id), alpha = 0.2) +"
+"0","  # geom_line(aes(group = participant_id, comparison), alpha = 0.5) +"
+"0","  scale_colour_discrete(name = ""Participant"") +"
+"0","  geom_point() +"
+"0","  labs("
+"0","    title = ""The Change in Proportion of Different Labels per Referent cacross Exposures\n(Isolated Condition)"","
+"0","    x = ""1st and 2nd exposures (1-2) and 2nd and 3rd exposures (2-3)"","
+"0","    y = ""Proportion of different labels"","
+"0","    colour = ""Participant"""
+"0","  ) +"
+"0","  theme("
+"0","    plot.caption = element_text(hjust = 0.5),"
+"0","    plot.title = element_text(hjust = 0.5),"
+"0","    plot.subtitle = element_text(hjust = 0.5)"
+"0","  ) +"
+"0","  scale_x_discrete(labels = c(""e1_e2"" = ""1-2"", ""e2_c1"" = ""2-3"")) +"
+"0","  NULL"
+"0","  coord_flip()"
+"1","<ggproto object: Class CoordFlip, CoordCartesian, Coord, gg>
+    aspect: function
+    backtransform_range: function
+    clip: on
+    default: FALSE
+    distance: function
+    expand: TRUE
+    is_free: function
+    is_linear: function
+    labels: function
+    limits: list
+    modify_scales: function
+    range: function
+    render_axis_h: function
+    render_axis_v: function
+    render_bg: function
+    render_fg: function
+    setup_data: function
+    setup_layout: function
+    setup_panel_guides: function
+    setup_panel_params: function
+    setup_params: function
+    train_panel_guides: function
+    transform: function
+    super:  <ggproto object: Class CoordFlip, CoordCartesian, Coord, gg>"
+"1",""
+"1","
+"
+"0","# ggsave(""diff_prop.png"")  "

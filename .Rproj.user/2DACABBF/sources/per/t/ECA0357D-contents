@@ -1,0 +1,1742 @@
+---
+title: "Zsofia Flora Hauk's Dissertation"
+format: html
+---
+
+## Libraries
+
+```{r}
+#| label: importing libraries
+
+library(tidyverse)
+library(ggplot2)
+library(data.table)
+library(ggrepel)
+library(patchwork)
+```
+
+## Data
+
+```{r}
+#| label: loading data
+
+files_dyads <- list.files("/Users/zsofiahauk/Desktop/diss_data/dyad_data/", full.names = TRUE)
+dyads <- read_csv(files_dyads, id = "file")
+
+files_solos <- list.files("/Users/zsofiahauk/Desktop/diss_data/solo_data/", full.names = TRUE)
+solos <- read_csv(files_solos, id = "file")
+```
+
+## Communicative success
+
+# Load data for each pair
+
+#- Load and apply transformation to all dyads' data
+
+```{r}
+
+```
+
+# 1. Dyad 1
+
+```{r}
+#| label: Dyad 1
+
+di_sldmscswrq <- read_csv("/Users/zsofiahauk/Desktop/diss_data/dyad_data/di_sldmscswrq.csv")
+di_l9vxw70eas <- read_csv("/Users/zsofiahauk/Desktop/diss_data/dyad_data/di_l9vxw70eas.csv")
+
+di_sld_l9v <- bind_rows(di_sldmscswrq, di_l9vxw70eas) %>% 
+  mutate(
+    score = ifelse(target_pos == button_number_selected, "CORRECT", "FALSE"),
+    score_n = ifelse(target_pos == button_number_selected, 1, 0)
+  )
+
+sld_l9v_prop <- di_sld_l9v %>% 
+  summarise(score_prop = sum(score_n, na.rm = TRUE)/32) %>% 
+  pull(score_prop)
+
+total1 <- di_sld_l9v %>% 
+  summarise(total_points = sum(score_n, na.rm = TRUE)) %>%
+  pull(total_points)
+
+sld_l9v_total <- di_sld_l9v %>% 
+  summarise(total_points = sum(score_n, na.rm = TRUE)) %>%
+  pull(total_points)
+# view(sld_l9v_total)
+# view(sld_l9v_prop)
+```
+
+# 2. Dyad 2
+
+```{r}
+#| label: Dyad 2
+
+di_3bnro4kfnw <- read_csv("/Users/zsofiahauk/Desktop/diss_data/dyad_data/di_3bnro4kfnw.csv")
+di_n8tf4dj060 <- read_csv("/Users/zsofiahauk/Desktop/diss_data/dyad_data/di_n8tf4dj060.csv")
+
+di_3bn_n8t <- bind_rows(di_3bnro4kfnw, di_n8tf4dj060) %>% 
+  mutate(
+    score = ifelse(target_pos == button_number_selected, "CORRECT", "FALSE"),
+    score_n = ifelse(target_pos == button_number_selected, 1, 0)
+  )
+
+bn_n8t_prop <- di_3bn_n8t %>% 
+  summarise(score_prop = sum(score_n, na.rm = TRUE)/32) %>% 
+  pull(score_prop)
+
+total2 <- di_3bn_n8t %>% 
+  summarise(total_points = sum(score_n, na.rm = TRUE)) %>%
+  pull(total_points)
+
+bn_n8t_total <- di_3bn_n8t %>% 
+  summarise(total_points = sum(score_n, na.rm = TRUE)) %>%
+  pull(total_points)
+# view(bn_n8t_total)
+# view(bn_n8t_prop)
+```
+
+# 3. Dyad 3
+
+```{r}
+#| label: Dyad 3
+
+# di_8s7cyryjl0 <- read_csv("/Users/zsofiahauk/Desktop/diss_data/dyad_data/di_8s7cyryjl0.csv")
+# di_bamzqks24l <- read_csv("/Users/zsofiahauk/Desktop/diss_data/dyad_data/di_bamzqks24l.csv")
+
+# di_8s7_bam <- bind_rows(di_8s7cyryjl0, di_bamzqks24l) %>% 
+#  mutate(
+#    score = ifelse(target_pos == button_number_selected, "CORRECT", "FALSE"),
+#    score_n = ifelse(target_pos == button_number_selected, 1, 0)
+#  )
+
+# s7_bam_prop <- di_8s7_bam %>% 
+#   summarise(score_prop = sum(score_n, na.rm = TRUE)/32) %>% 
+#   pull(score_prop)
+
+# di_8s7cyryjl0 |>
+#   count(target)
+# di_bamzqks24l |>
+#   count(target)
+
+```
+
+# 4. Dyad 4
+
+```{r}
+#| label: Dyad 4
+
+di_b6s1xf3qgo <- read_csv("/Users/zsofiahauk/Desktop/diss_data/dyad_data/di_b6s1xf3qgo.csv")
+di_lp1je60a2r <- read_csv("/Users/zsofiahauk/Desktop/diss_data/dyad_data/di_lp1je60a2r.csv")
+
+di_b6s_lp1 <- bind_rows(di_b6s1xf3qgo, di_lp1je60a2r) %>% 
+  mutate(
+    score = ifelse(target_pos == button_number_selected, "CORRECT", "FALSE"),
+    score_n = ifelse(target_pos == button_number_selected, 1, 0)
+  )
+
+b6s_lp1_prop <- di_b6s_lp1 %>% 
+  summarise(score_prop = sum(score_n, na.rm = TRUE)/32) %>% 
+  pull(score_prop)
+
+total4 <- di_b6s_lp1 %>% 
+  summarise(total_points = sum(score_n, na.rm = TRUE)) %>%
+  pull(total_points)
+
+b6s_lp1_total <- di_b6s_lp1 %>% 
+  summarise(total_points = sum(score_n, na.rm = TRUE)) %>%
+  pull(total_points)
+# view(b6s_lp1_total)
+# view(b6s_lp1_prop)
+```
+
+# 5. Dyad 5
+
+```{r}
+#| label: Dyad 5
+
+di_gkgjghqeba <- read_csv("/Users/zsofiahauk/Desktop/diss_data/dyad_data/di_gkgjghqeba.csv")
+di_v1mkglj77m <- read_csv("/Users/zsofiahauk/Desktop/diss_data/dyad_data/di_v1mkglj77m.csv")
+
+di_gkg_v1m <- bind_rows(di_gkgjghqeba, di_v1mkglj77m) %>% 
+  mutate(
+    score = ifelse(target_pos == button_number_selected, "CORRECT", "FALSE"),
+    score_n = ifelse(target_pos == button_number_selected, 1, 0)
+  )
+
+gkg_v1m_prop <- di_gkg_v1m %>% 
+  summarise(score_prop = sum(score_n, na.rm = TRUE)/32) %>% 
+  pull(score_prop)
+
+total5 <- di_gkg_v1m %>% 
+  summarise(total_points = sum(score_n, na.rm = TRUE)) %>%
+  pull(total_points)
+
+gkg_v1m_total <- di_gkg_v1m %>% 
+  summarise(total_points = sum(score_n, na.rm = TRUE)) %>%
+  pull(total_points)
+# view(gkg_v1m_total)
+# view(gkg_v1m_prop)
+```
+
+# 6. Dyad 6
+
+```{r}
+#| label: Dyad 6
+
+di_y7u85qsqdc <- read_csv("/Users/zsofiahauk/Desktop/diss_data/dyad_data/di_y7u85qsqdc.csv")
+di_ypxea5q8fo <- read_csv("/Users/zsofiahauk/Desktop/diss_data/dyad_data/di_ypxea5q8fo.csv")
+
+di_y7u_ypx <- bind_rows(di_y7u85qsqdc, di_ypxea5q8fo) %>% 
+  mutate(
+    score = ifelse(target_pos == button_number_selected, "CORRECT", "FALSE"),
+    score_n = ifelse(target_pos == button_number_selected, 1, 0)
+  )
+y7u_ypx_prop <- di_y7u_ypx %>% 
+  summarise(score_prop = sum(score_n, na.rm = TRUE)/32) %>% 
+  pull(score_prop)
+
+total6 <- di_y7u_ypx %>% 
+  summarise(total_points = sum(score_n, na.rm = TRUE)) %>%
+  pull(total_points)
+
+y7u_ypx_total <- di_y7u_ypx %>% 
+  summarise(total_points = sum(score_n, na.rm = TRUE)) %>%
+  pull(total_points)
+# view(y7u_ypx_total)
+# view(y7u_ypx_prop)
+
+# combine all the totals and props
+
+all_dyads <- c("y7u_ypx", "sld_l9v", "b6s_lp1", "gkg_v1m", "bn_n8t")
+
+all_props <- c(y7u_ypx_prop, sld_l9v_prop, b6s_lp1_prop, gkg_v1m_prop, bn_n8t_prop)
+
+all_totals <- c(y7u_ypx_total, sld_l9v_total, b6s_lp1_total, gkg_v1m_total, bn_n8t_total)
+
+all <- rbind(y7u_ypx_prop, y7u_ypx_total, sld_l9v_prop, sld_l9v_total, b6s_lp1_prop, b6s_lp1_total, gkg_v1m_prop, gkg_v1m_total, bn_n8t_prop, bn_n8t_total)
+# view(all)
+```
+
+# Proportion success
+
+```{r}
+#| label: proportion of success, number of trials correct/32 
+
+# prop_df <- tibble(
+#   pair = c('y7u_ypx', 'gkg_v1m', 'b6s_lp1', '8s7_bam', # '3bn_n8t', 'sld_l9v'),
+#   prop = c(y7u_ypx_prop, gkg_v1m_prop, b6s_lp1_prop, # s7_bam_prop, bn_n8t_prop, sld_l9v_prop)
+# )
+
+prop_df <- tibble(
+  pair = c('y7u_ypx', 'gkg_v1m', 'b6s_lp1', '3bn_n8t', 'sld_l9v'),
+  prop = c(y7u_ypx_prop, gkg_v1m_prop, b6s_lp1_prop, bn_n8t_prop, sld_l9v_prop),
+  labels = c(pair),
+  type = c('type', 'type', 'type', 'type', 'type'),
+)
+prop_df
+
+prop_df2 <- tibble(
+  pair = c('y7u', 'ypx', 'gkg', 'v1m', 'b6s', 'lp1', '3bn', 'n8t', 'sld', 'l9v'),
+  prop = c(y7u_ypx_prop, y7u_ypx_prop, gkg_v1m_prop, gkg_v1m_prop, b6s_lp1_prop, b6s_lp1_prop, bn_n8t_prop, bn_n8t_prop, sld_l9v_prop, sld_l9v_prop),
+  labels = c(pair),
+  type = c('dyad', 'dyad', 'dyad', 'dyad', 'dyad', 'dyad', 'dyad', 'dyad', 'dyad', 'dyad'),
+)
+prop_df2
+```
+
+# Graph success proportion
+
+```{r}
+#| label: proportion success of every pair
+
+prop_df |>
+  ggplot(aes(pair, prop)) +
+  geom_point(alpha=1) +
+  labs(
+    title = "The Communicative Success of Dyads",
+    subtitle = "Communicative success is calculated as a proportion: the number of collected points out of 32.",
+    caption = "In the Communication Condition, there were 32 Communication Phase trials. \n
+    If the receiver selected the sender's target referent (i.e., intended meaning), then the dyad received a score of 1 for that trial. \n
+    If the receiver selected incorrectly, then the dyad received a score of 0 for that trial.",
+    x = "Dyads (paired participants)",
+    y = "Proportion of successful trials"
+  ) +
+  # geom_text(aes(label = c(1, 2, 3, 4, 5), nudge_y = 0)) +
+    theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank()) +
+  ylim(0, 1) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  ) +
+  coord_flip() +
+  NULL
+
+prop_df |>
+  ggplot(aes(pair, prop, label = labels)) +
+  geom_point(alpha=1) +
+  labs(
+    title = "Dyads' Communicative Success",
+    x = "Dyads",
+    y = "Proportion of successful trials"
+  ) +
+    geom_label(vjust = 0, nudge_x = 0.1) +
+    theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank()) +
+  ylim(0, 1) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  ) +
+  coord_flip() +
+  NULL
+
+prop_df2 |>
+  ggplot(aes(type, prop)) +
+  geom_dotplot(
+    binaxis = 'y', stackdir = 'center', stackratio = 1.5, dotsize = 0.5
+    ) + 
+  labs(
+    title = "Dyads' Communicative Success",
+    x = "Dyads",
+    y = "Proportion of successful trials"
+  ) +
+    theme(
+      axis.text.x = element_blank(),
+      axis.text.y = element_blank(),
+      axis.ticks.y = element_blank()) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  )
+
+# ggsave(filnename = "prop_df2.png", filename = "/Users/zsofiahauk/Desktop")
+```
+
+## Summarise the successful trials
+
+```{r}
+#| label: summarise the successful trials data
+totals <- tibble(
+  pair = c('y7u_ypx', 'gkg_v1m', 'b6s_lp1', '3bn_n8t', 'sld_l9v'),
+  total = c(y7u_ypx_total, gkg_v1m_total, b6s_lp1_total, bn_n8t_total, sld_l9v_total)
+)
+totals
+
+totals %>% 
+  summarise(mean = mean(total), n = n(), sd = sd(total))
+
+totals2 <- tibble(
+  pair = c('y7u', 'ypx', 'gkg', 'v1m', 'b6s', 'lp1', '3bn', 'n8t', 'sld', 'l9v'),
+  total = c(y7u_ypx_total, y7u_ypx_total, gkg_v1m_total, gkg_v1m_total, b6s_lp1_total, b6s_lp1_total, bn_n8t_total, bn_n8t_total, sld_l9v_total, sld_l9v_total),
+  type = c('dyad', 'dyad', 'dyad', 'dyad', 'dyad', 'dyad', 'dyad', 'dyad', 'dyad', 'dyad')
+)
+totals2
+
+totals2 %>% 
+  summarise(mean = mean(total), n = n(), sd = sd(total))
+
+totals_plot <- totals |>
+  ggplot(aes(pair, total)) +
+  geom_point(alpha=1) +
+  labs(
+    title = "The Communicative Success of Dyads (collected points)",
+    x = "Dyads (paired participants)",
+    y = "Collected Points"
+  ) 
+totals_plot
+
+totals_plot2 <- totals2 |>
+  ggplot(aes(type, total)) +
+  geom_dotplot(
+    binaxis = 'y', stackdir = 'center', stackratio = 1.5, dotsize = 0.5
+    ) +
+  labs(
+    title = "The Communicative Success of Dyads (collected points)",
+    x = "\nDyads (paired participants)",
+    y = "\nCollected Points"
+  ) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  ) +
+  stat_summary(
+    fun.data = "mean_sdl", fun.args = list(mult = 1), geom = "pointrange", color = "red", size = 0.2
+  )
+totals_plot2
+```
+
+```{r}
+totals_plot2 <- totals2 |>
+  ggplot(aes(type, total)) +
+  geom_dotplot(
+    binaxis = 'y', stackdir = 'center', stackratio = 1.5, dotsize = 0.5
+    ) +
+  labs(
+    title = "\nCommunicative Success\n",
+    x = "\nDyads (pairs of participants)\n",
+    y = "\nCollected Points (y/32)\n"
+  ) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5),
+    axis.text.x = element_blank(),
+  ) +
+  stat_summary(
+    fun.data = "mean_sdl", fun.args = list(mult = 1), geom = "pointrange", color = "red", size = 0.2
+  )
+totals_plot2
+ggsave("totals_plot2.png", path = "/Users/zsofiahauk/Desktop", width = 8, height = 5)
+
+```
+
+## Specificity
+
+# - Dyads' specificity
+
+```{r}
+#| label: dyads' specificity
+
+files_dyads <- list.files("/Users/zsofiahauk/Desktop/diss_data/dyad_data/", full.names = TRUE)
+
+dyads <- read_csv(files_dyads, id = "file")
+
+dyad_counts <- dyads %>%
+  group_by(participant_id) %>%
+  drop_na(director_label) %>%
+  select(participant_id, director_label) %>%
+  distinct() %>%
+  count(participant_id) %>%
+  mutate(type = "dyads")
+dyad_counts
+
+dyad_counts_list <- dyads %>%
+  group_by(participant_id) %>%
+  drop_na(director_label) %>%
+  select(participant_id, director_label) %>%
+  distinct() %>%
+  count(participant_id)
+dyad_counts_list
+
+good_dyad_spec <- dyads %>% 
+  filter(participant_id %in% c("3bnro4kfnw", "b6s1xf3qgo", "gkgjghqeba", "l9vxw70eas", "y7u85qsqdc")) %>%
+  group_by(participant_id) %>%
+  drop_na(director_label) %>%
+  select(participant_id, director_label) %>%
+  distinct() %>%
+  count(participant_id)
+# view(good_dyad_spec)
+
+good_spec <- tibble(
+  rowname = paste0(c("3bnro4kfnw", "b6s1xf3qgo", "gkgjghqeba", "l9vxw70eas", "y7u85qsqdc")),
+  x = good_dyad_spec$participant_id,
+  y = good_dyad_spec$n
+)
+good_spec
+new_good_spec  <- good_spec  %>% 
+  arrange(factor(rowname, levels = c("y7u85qsqdc", "l9vxw70eas", "b6s1xf3qgo", "gkgjghqeba", "3bnro4kfnw")))
+new_good_spec
+
+new_tibble <- tibble(
+  dyad_names = all_dyads,
+  dyad_props = all_props, 
+  dyad_totalpoints = all_totals, 
+  dyad_spec = new_good_spec$y
+)
+view(new_tibble)
+```
+
+# Dyads Spec. with new tibbles
+
+```{r}
+dyad_counts_tib <- tibble(
+  part = c('y7u_ypx', 'gkg_v1m', 'b6s_lp1', '3bn_n8t', 'sld_l9v'),
+  cats = c(4, 27, 16, 18, 19),
+  labels = c(part),
+  type = c('dyads', 'dyads', 'dyads', 'dyads', 'dyads')
+)
+dyad_counts_tib
+# dyad_counts_tib %>% 
+#  summarise(mean = mean(cats), n = n(), sd = sd(cats))
+
+dyad_counts_tib_iso <- tibble(
+  part = c('y7u', 'ypx', 'gkg', 'v1m', 'b6s', 'lp1', '3bn', 'n8t', 'sld', 'l9v'),
+  cats = c(4, 4, 27, 27, 16, 16, 18, 18, 19, 19),
+  labels = c(part),
+  type = c('dyads', 'dyads', 'dyads', 'dyads', 'dyads', 'dyads', 'dyads', 'dyads', 'dyads', 'dyads')
+)
+dyad_counts_tib_iso
+dyad_counts_tib_iso %>% 
+  summarise(mean = mean(cats), n = n(), sd = sd(cats))
+```
+
+# - Solos' specificity
+
+```{r}
+#| label: solos' specificity
+
+files_solos <- list.files("/Users/zsofiahauk/Desktop/diss_data/solo_data/", full.names = TRUE)
+
+solos <- read_csv(files_solos, id = "file")
+
+solos_counts <- solos %>% 
+  group_by(participant_id) %>%
+  drop_na(director_label) %>%
+  select(participant_id, director_label) %>% 
+  distinct() %>% 
+  count(participant_id) %>%
+  mutate(type = "solo")
+solos_counts
+
+solos_counts_list <- solos %>%
+  group_by(participant_id) %>%
+  drop_na(director_label) %>%
+  select(participant_id, director_label) %>%
+  distinct() %>%
+  count(participant_id)
+solos_counts_list
+```
+
+# Solos' Spec, with new tibbles
+
+```{r}
+solos_counts_tib <- tibble(
+  part = 
+    c('cb2hlbmy82', 'm05le2pv5y', '78qejabkuq', '8jrul385v7', 'wpqewv43m0', '06vod7xnwc'),
+  cats = c(11, 16, 16, 16, 20, 20),
+  labels = c(part),
+  type = c('solo', 'solo', 'solo', 'solo', 'solo', 'solo')
+)
+solos_counts_tib
+solos_counts_tib %>% 
+  summarise(mean = mean(cats), n = n(), sd = sd(cats))
+```
+
+## Plotting Specificity, with new tibbles
+
+```{r}
+solos_plot_tib <- ggplot(
+  data = solos_counts_tib,
+  mapping = aes(x = solos_counts_tib$part, y = solos_counts_tib$cats)
+) +
+  geom_point()
+solos_plot_tib
+
+dyad_plot_tib <- ggplot(
+  data = dyad_counts_tib_iso,
+  mapping = aes(x = dyad_counts_tib_iso$part, y = dyad_counts_tib_iso$cats)
+) +
+  geom_point()
+dyad_plot_tib
+
+everything_tib <- rbind(dyad_counts_tib_iso, solos_counts_tib)
+
+everything_plot_dot3_simple_tibs <- ggplot(
+  everything_tib,
+  aes(x = type, y = cats, label = part)
+  ) +
+  geom_dotplot(
+    binaxis = 'y', stackdir = 'center', stackratio = 1.5, dotsize = 0.5
+    ) + 
+  scale_x_discrete("Condition", labels = c("Communication", "Isolated")) +
+  scale_y_continuous("Specificity", limits = c(0, 30))
+
+everything_plot_dot3_simple_tibs + 
+  geom_label(vjust = 0, nudge_x = 0.1) +
+  labs(
+    title = "Specificity of the Final Category Systems across Conditions") +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  ) +
+  stat_summary(
+    fun.data = "mean_sdl", fun.args = list(mult = 1), geom = "pointrange", color = "red", size = 0.2
+  )
+
+
+everything_plot_dot3_simple_tibs <- ggplot(
+  everything_tib,
+  aes(x = type, y = cats, label = part)
+  ) +
+  geom_dotplot(
+    binaxis = 'y', stackdir = 'center', stackratio = 1.5, dotsize = 0.5
+    ) + 
+  scale_x_discrete("Condition", labels = c("Communication", "Isolated")) +
+  scale_y_continuous("Specificity", limits = c(0, 30)) +
+  geom_text_repel(hjust = 0.5, vjust = 0.5) +
+  # geom_label() +
+  # geom_label(vjust = 0, nudge_x = 0.1) +
+  labs(
+    title = "Specificity of the Final Category Systems across Conditions") +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  ) +
+  stat_summary(
+    fun.data = "mean_sdl", fun.args = list(mult = 1), geom = "pointrange", color = "red", size = 0.2
+  )
+everything_plot_dot3_simple_tibs
+```
+
+
+```{r}
+everything_plot_dot3_simple_tibs <- ggplot(
+  everything_tib,
+  aes(x = type, y = cats)
+  ) +
+  geom_dotplot(
+    binaxis = 'y', stackdir = 'center', stackratio = 1.5, dotsize = 0.5
+    ) + 
+  scale_x_discrete("\nCondition\n", labels = c("\nCommunication\n", "\nIsolated\n")) +
+  scale_y_continuous("\nSpecificity\n", limits = c(0, 30)) +
+  # geom_text_repel(hjust = 0.5, vjust = 0.5) +
+  # geom_label() +
+  # geom_label(vjust = 0, nudge_x = 0.1) +
+  labs(
+    title = "\nCategory System Specificity\n\n(by Condition)\n") +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5),
+    axis.text.x = element_text(size = 10),
+    ) +
+  stat_summary(
+    fun.data = "mean_sdl", fun.args = list(mult = 1), geom = "pointrange", color = "red", size = 0.2
+  )
+everything_plot_dot3_simple_tibs
+ggsave("everything_plot_dot3_simple_tibs.png", path = "/Users/zsofiahauk/Desktop", width = 8, height = 5)
+
+```
+
+## Plotting specificity
+
+```{r}
+#| label: dyads' and solos' specificity
+
+solos_plot <- ggplot(
+  data = solos_counts_list,
+  mapping = aes(x = solos_counts$participant_id, y = solos_counts$n)
+) +
+  geom_point()
+
+dyad_plot <- ggplot(
+  data = dyad_counts_list,
+  mapping = aes(x = dyad_counts$participant_id, y = dyad_counts$n)
+) +
+  geom_point()
+
+everything <- rbind(dyad_counts, solos_counts)
+
+# everything_plot <- ggplot(
+#   data = everything,
+#   mapping = aes(x = everything$type, y = everything$n)
+# ) +
+#   geom_point()
+# everything_plot
+# 
+# everything_plot_dot <- ggplot(
+#   everything, aes(x = everything$type, y = everything$n)) +
+#   geom_dotplot(binaxis = 'y', stackdir = 'center')
+# everything_plot_dot
+# 
+# everything_plot_dot2 <- ggplot(
+#   everything, 
+#   aes(x = everything$type, y = everything$n)
+#   ) +
+#   geom_dotplot(
+#     binaxis = 'y', stackdir = 'center',
+#     stackratio = 1.5, dotsize = 0.5)
+# everything_plot_dot2
+
+everything_plot_dot3 <- ggplot(
+  everything,
+  aes(x = everything$type, y = everything$n)
+  ) +
+  geom_dotplot(
+    binaxis = 'y', stackdir = 'center', stackratio = 1.5, dotsize = 0.5
+    ) + 
+  scale_x_discrete("Condition", labels = c("Communication", "Isolated")) +
+  scale_y_continuous("Specificity", limits = c(0, 30))
+
+everything_plot_dot3 + 
+  labs(
+    title = "Specificity of the Final Category Systems across Conditions",
+    subtitle = "Specificity is the number of labels that participants generated over the course of the experiment.",
+    caption = "In the Communication Condition, dyads generated ... .\n In the Isolated Condition, participants generated ... .\n"
+  ) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  ) +
+  stat_summary(
+    fun = "mean", geom = "point", color = "red"
+  )
+everything_plot_dot3
+
+everything_plot_dot3_simple <- ggplot(
+  everything,
+  aes(x = everything$type, y = everything$n)
+  ) +
+  geom_dotplot(
+    binaxis = 'y', stackdir = 'center', stackratio = 1.5, dotsize = 0.5
+    ) + 
+  scale_x_discrete("Condition", labels = c("Communication", "Isolated")) +
+  scale_y_continuous("Specificity", limits = c(0, 30))
+
+everything_plot_dot3 + 
+  labs(
+    title = "Specificity of the Final Category Systems across Conditions") +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  ) +
+  stat_summary(
+    fun = "mean", geom = "point", color = "red"
+  )
+everything_plot_dot3_simple
+```
+
+## The relationship between communicative success and the number of categories
+
+```{r}
+#| label: pairs, prop. success, and specificity
+
+# more <- tibble(
+#   pair = c('y7u_ypx', 'gkg_v1m', 'b6s_lp1', '8s7_bam', # '3bn_n8t', 'sld_l9v'),
+#   prop = c(y7u_ypx_prop, gkg_v1m_prop, b6s_lp1_prop, # s7_bam_prop, bn_n8t_prop, sld_l9v_prop),
+#   cats = c(4, 27, 16, 22, 18, 19)
+# )
+# more
+
+more <- tibble(
+  pair = c('y7u_ypx', 'gkg_v1m', 'b6s_lp1', '3bn_n8t', 'sld_l9v'),
+  prop = c(y7u_ypx_prop, gkg_v1m_prop, b6s_lp1_prop, bn_n8t_prop, sld_l9v_prop),
+  cats = c(4, 27, 16, 18, 19),
+  type = c('dyads', 'dyads','dyads', 'dyads', 'dyads')
+)
+more
+```
+
+```{r}
+#| label: plotting pairs, prop. success, and the number of categories
+
+# One massive scatter plot
+ggplot(data = more) +
+  geom_point(mapping = aes(x = prop, y = cats, color = pair))
+
+# Facet wrapped, one pair displayed in one little section
+complexgraph <- ggplot(data = more) +
+  geom_point(mapping = aes(x = prop, y = cats, show.legend = FALSE)) +
+  facet_wrap( ~ pair) +
+  labs(
+    title = "The Relationship between Dyads' Communicative Success and Specificity",
+    subtitle = "Did higher specificity correlate with greater or lesser communicative success?",
+    caption = "The first 3 characters of each participant in a dyad are combined to form their dyad name. For example, participants di_sldmscswrq and di_l9vxw70eas create the dyad name, sld_l9v.\n [insert alternate caption, if needed]",
+    x = "Proportion of successful trials (points/32)",
+    y = "Specificity"
+  ) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  )
+complexgraph
+```
+
+
+```{r}
+simplegraph <- ggplot(data = more) +
+  geom_point(mapping = aes(x = prop, y = cats, show.legend = FALSE)) +
+  facet_wrap( ~ pair) +
+  labs(
+    title = "Dyads' Communicative Success and Specificity",
+    x = "Proportion of successful trials",
+    y = "Specificity"
+  ) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  )
+simplegraph
+```
+
+
+```{r}
+simplegraph2 <- ggplot(data = more) +
+  geom_point(mapping = aes(x = prop, y = cats, colour = pair)) +
+  labs(
+    title = "\nCommunicative Success\nand Specificity\n",
+    x = "\nProportion of successful trials",
+    y = "\nSpecificity",
+    colour = "Dyads"
+  ) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  )
+simplegraph2
+```
+
+
+```{r}
+simplegraph25 <- ggplot(data = new_tibble) +
+  geom_point(mapping = aes(x = dyad_totalpoints, y = dyad_spec, colour = dyad_names)) +
+  labs(
+    title = "\nCommunicative Success and Specificity\n",
+    x = "\nCollected points (x/32)\n",
+    y = "\nSpecificity\n",
+    colour = "Dyads"
+  ) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  ) +
+  NULL
+  coord_flip()
+simplegraph25
+ggsave("simplegraph25.png", path = "/Users/zsofiahauk/Desktop", width = 8, height = 5)
+
+```
+
+
+```{r}
+more2 <- tibble(
+  pair = c('y7u', 'ypx', 'gkg', 'v1m', 'b6s', 'lp1', '3bn', 'n8t', 'sld', 'l9v'),
+  prop = c(y7u_ypx_prop, y7u_ypx_prop, gkg_v1m_prop, gkg_v1m_prop, b6s_lp1_prop, b6s_lp1_prop, bn_n8t_prop, bn_n8t_prop, sld_l9v_prop, sld_l9v_prop),
+  cats = c(4, 4, 27, 27, 16, 16, 18, 18, 19, 19),
+  type = c('dyads', 'dyads','dyads', 'dyads', 'dyads', 'dyads', 'dyads','dyads', 'dyads', 'dyads'),
+  totals = c(20, 20, 10, 10, 32, 32, 25, 25, 31, 31)
+)
+view(more2)
+```
+
+
+```{r}
+simplegraph3 <- ggplot(data = more2) +
+  geom_point(aes(x = prop, y = cats)) +
+  labs(
+    title = "Dyads' Communicative Success\nand Specificity",
+    x = "\nProportion of successful trials",
+    y = "\nSpecificity",
+    colour = "Dyads"
+  ) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  ) +
+  NULL
+  coord_flip()
+simplegraph3
+```
+
+
+```{r}
+simplegraph4 <- ggplot(data = more2) +
+  geom_point(aes(x = totals, y = cats)) +
+  labs(
+    title = "Dyads' Communicative Success\nand Specificity",
+    x = "\nCollected Points\n(x/32)",
+    y = "\nSpecificity",
+    colour = "Dyads"
+  ) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  ) +
+  NULL
+  coord_flip()
+simplegraph4
+```
+
+
+```{r}
+simple <- ggplot(more2, aes(cats, prop))
+simple
+  
+
+# ggsave("rel_commspec.png", last_plot(), path = "/Users/zsofiahauk/Desktop/", width = 8, height = 5)
+```
+
+## Is this statistically significant?
+
+```{r}
+#| label: statistical significance of the relationship between higher specificity and the number of categories
+
+
+```
+
+## The number of unique labels across time
+
+```{r}
+#| label: the number of unique labels over time (i.e., trial index)
+
+
+```
+
+## Do solos' re-use the same label during the Check Phase?
+
+```{r}
+#| label: create a graph for the Check and Expansion Phases, resp.
+check <- solos %>% 
+  filter(block == "check") %>% 
+  group_by(participant_id) %>% 
+  select(participant_id, block, shuffled_context2, foil2)
+expansion <- solos %>% 
+  filter(block == "expansion") %>% 
+  group_by(participant_id) %>% 
+  select(participant_id, block, target, director_label) 
+everything_solos <- rbind(expansion, check)
+everything_solos
+```
+
+```{r}
+#| label: Check for all participants, if they re-used the same label between each block
+files_solos <- list.files("/Users/zsofiahauk/Desktop/diss_data/solo_data/", full.names = TRUE)
+solos <- read_csv(files_solos, id = "file")
+
+checksolos <- solos %>% 
+  filter(block == "check") %>% 
+  group_by(participant_id) %>% 
+  select(participant_id, block, shuffled_context2, foil2)
+expansionsolos <- solos %>% 
+  filter(block == "expansion") %>% 
+  group_by(participant_id) %>% 
+  select(participant_id, block, target, director_label) 
+
+new_solos <- expansionsolos[c('participant_id', 'block', 'target', 'director_label')]
+
+new_solos2 <- data.frame('participant_id' = checksolos$participant_id,
+                   'block' = checksolos$block,
+                   'target' = checksolos$shuffled_context2,
+                   'director_label' = checksolos$foil2)
+
+newbetter_solos <- rbind(new_solos, new_solos2) |>
+  group_by(participant_id, block, target) |>
+  mutate(
+    rep = row_number()
+  ) |>
+  unite("block", block, rep)
+
+newbetter_wider_solos <- newbetter_solos |>
+  pivot_wider(names_from = block, values_from = director_label)
+
+newbetter_wider_solos <- newbetter_wider_solos |>
+  mutate(
+      e1_e2 = ifelse(expansion_1 == expansion_2, "SAME", "DIFF"),
+      e2_c1 = ifelse(expansion_2 == check_1, "SAME", "DIFF")
+  )
+
+newbetter_longer <- newbetter_wider_solos |>
+  pivot_longer(
+    cols = c("e1_e2", "e2_c1"),
+    names_to = "comparison",
+    values_to = "label"
+  )
+
+newbetter_longer
+```
+
+# Plot the SOLOS' SAME and DIFF (stacked, filled bar chart)
+
+```{r}
+#| label: solos' stacked, filled bar chart
+newbetter_longer |>
+  filter(
+    !is.na(label)
+  ) |>
+  ggplot(aes( x = comparison, fill = label)) +
+  geom_bar(position = "fill") +
+  facet_wrap( ~ participant_id) +
+  labs(
+    title = "The Proportion of SAME/DIFFERENT Labels per Target across Phases in the Isolated Condition",
+    caption = "During the Expansion Phase, if the second time that a participant saw a target referent, their label matched the first label that they generated for that referent, then their labels were the SAME. If the second time that a participant saw a target referent, their label did not match the first label that they generated for that referent, then their labels were DIFFERENT.\n
+    During the Check Phase, if the label that the participant selected for that target referent matched the label that they generated for that referent the second time that they saw it, then their labels were the SAME. If the label that the participant selected for that target referent did not match the label that they generated for that referent the second time that they saw it, then the labels were DIFFERENT.",
+    x = "Between the 1st and 2nd Exposures, and the 2nd and the 3rd Exposures",
+    y = "Proportion of SAME/DIFF Labels"
+  ) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  ) +
+  scale_fill_discrete(name = "Label between Phases for each Target Referent",
+                      labels = c("Different", "Same")) +
+    scale_x_discrete(labels = c("e1_e2" = "1-2",
+                                "e2_c1" = "2-3"))
+
+newbetter_longer |>
+  filter(
+    !is.na(label)
+  ) |>
+  ggplot(aes( x = comparison, fill = label)) +
+  geom_bar(position = "fill") +
+  facet_wrap( ~ participant_id) +
+  labs(
+    title = "The Proportions of Label Types per Referent across Exposures\n(Isolated Condition)",
+    x = "1st and 2nd exposures (1-2) and 2nd and 3rd exposures (2-3)",
+    y = "Proportions of label types"
+  ) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  ) +
+  scale_fill_discrete(name = "Label types",
+                      labels = c("different", "same")) +
+    scale_x_discrete(labels = c("e1_e2" = "1-2",
+                                "e2_c1" = "2-3"))
+ggsave("newbetter_longer.png")
+```
+
+#- Pivot longer the SAME/DIFF data
+
+```{r}
+newbetter_longer <- newbetter_longer |>
+  mutate(
+    Same_num = ifelse(label == "SAME", 1, 0),
+    Diff_num = ifelse(label == "DIFF", 1, 0)
+  )
+newbetter_longer
+```
+
+#- Calculate the proportions of SAME/DIFF
+
+```{r}
+#| label: calc. solos' proportions
+same_prop <- newbetter_longer |>
+  filter(
+    !is.na(Same_num)
+  ) |>
+  group_by(participant_id) |>
+  summarise(
+    same_prop = sum(Same_num) / n(),
+    .groups = "drop"
+  )
+same_prop
+
+same_prop <- newbetter_longer |>
+  filter(
+    !is.na(Same_num)
+  ) |>
+  group_by(participant_id, comparison) |>
+  summarise(
+    same_prop = sum(Same_num) / n(),
+    .groups = "drop"
+  )
+
+same_prop
+
+diff_prop <- newbetter_longer |>
+  filter(
+    !is.na(Diff_num)
+  ) |>
+  group_by(participant_id) |>
+  summarise(
+    diff_prop = sum(Diff_num) / n(),
+    .groups = "drop"
+  )
+diff_prop
+
+diff_prop2 <- newbetter_longer |>
+  filter(
+    !is.na(Diff_num)
+  ) |>
+  group_by(participant_id, comparison) |>
+  summarise(
+    diff_prop = sum(Diff_num) / n(),
+    diff_num2 = sum(Diff_num),
+    .groups = "drop"
+  )
+diff_prop2
+
+diff_prop2 <- newbetter_longer |>
+  filter(
+    !is.na(Diff_num)
+  ) |>
+  group_by(participant_id, comparison) |>
+  summarise(
+    diff_prop = sum(Diff_num) / n(),
+    diff_num2 = sum(Diff_num),
+    .groups = "drop"
+  )
+diff_prop2
+
+diffnumonly <- diff_prop2 |>
+  filter(comparison == "e1_e2")
+diffnumonly
+
+diffnumonly %>% 
+  summarise(mean = mean(diff_num2), n = n(), sd = sd(diff_num2))
+
+```
+
+# DP for the prop different labels 
+```{r}
+diff_propplot <- ggplot(
+  diff_prop2,
+  aes(x = comparison, y = diff_prop, colour = participant_id)
+  ) +
+  geom_dotplot(
+    binaxis = 'y', stackdir = 'center', stackratio = 1.5, dotsize = 0.5
+    ) +
+  stat_summary(
+    fun.data = "mean_sdl", fun.args = list(mult = 1), geom = "pointrange", color = "red", size = 0.2
+  )
+diff_propplot
+```
+
+
+# Plot the SOLOS' SAME/DIFF props (connected dot plot)
+
+```{r}
+same_prop |>
+  ggplot(aes(comparison, same_prop, colour = participant_id), alpha = 0.2) +
+  geom_line(aes(group = participant_id, comparison), alpha = 0.5) +
+  scale_colour_discrete(name = "Participant") +
+  geom_point() +
+  labs(
+    title = "The Change in Proportion of Same Labels per Referent cacross Exposures\n(Isolated Condition)",
+    x = "1st and 2nd exposures (1-2) and 2nd and 3rd exposures (2-3)",
+    y = "Proportion of same labels",
+    colour = "Participant"
+  ) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  ) +
+  scale_x_discrete(labels = c("e1_e2" = "1-2", "e2_c1" = "2-3"))
+ggsave("same_prop.png")
+```
+
+
+```{r}
+# diff_prop2 |>
+#   ggplot(aes(comparison, diff_prop, colour = participant_id), alpha = 0.2) +
+#   geom_line(aes(group = participant_id, comparison), alpha = 0.5) +
+#   scale_colour_discrete(name = "Participant") +
+#   geom_point() +
+#   labs(
+#     title = "The Change in Proportion of Different Labels per Referent # cacross Exposures\n(Isolated Condition)",
+#     x = "1st and 2nd exposures (1-2) and 2nd and 3rd exposures (2-3)",
+#     y = "Proportion of different labels",
+#     colour = "Participant"
+#   ) +
+#   theme(
+#     plot.caption = element_text(hjust = 0.5),
+#     plot.title = element_text(hjust = 0.5),
+#     plot.subtitle = element_text(hjust = 0.5)
+#   ) +
+#   scale_x_discrete(labels = c("e1_e2" = "1-2", "e2_c1" = "2-3")) +
+#   stat_summary(
+#     data = newbetter_longer,
+#     aes(x = comparison, y = Diff_num, colour = comparison),
+#     fun.data = "mean_cl_boot", size = 0.3,
+#   ) +
+#   geom_pointrange(position = "dodge", width = 0.25) +
+#   theme(legend.position = "none")
+```
+
+```{r}
+diffnumonly |>
+  filter(comparison == "e1_e2")
+
+diffnumonlyfiltered <- diffnumonly %>% 
+  filter(comparison == "e1_e2")
+diffnumonlyfiltered
+```
+
+
+```{r}
+diff_prop2plot <- diff_prop2|>
+  ggplot(aes(comparison, diff_prop, colour = participant_id), alpha = 0.2) +
+  geom_line(aes(group = participant_id, comparison), alpha = 0.5) +
+  scale_colour_discrete(name = "Participant") +
+  geom_point() +
+  labs(
+    title = "\nChange in Proportion of Different Labels per Referent across Exposures\n\n(Isolated Condition)\n",
+    x = "\n1st and 2nd exposures (1-2) and 2nd and 3rd exposures (2-3)\n",
+    y = "\nProportion of different labels\n",
+    colour = "Participant"
+  ) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  ) +
+  scale_x_discrete(labels = c("e1_e2" = "1-2", "e2_c1" = "2-3")) +
+  stat_summary(
+    data = newbetter_longer,
+    aes(x = comparison, y = Diff_num, colour = comparison),
+    fun.data = "mean_cl_boot", position = position_nudge(x = -0.05, y = 0)
+  ) +
+  theme(legend.position = "none")
+diff_prop2plot
+ggsave("diff_prop2plot.png", path = "/Users/zsofiahauk/Desktop", width = 8, height = 5)
+```
+
+
+```{r}
+# ggsave("diff_prop.png")
+
+# ggplot() +
+#   geom_point(
+#     data = diff_prop, 
+#     aes(comparison, diff_prop, colour = participant_id), 
+#     width = 0.1, alpha = 0.5
+#     ) +
+#   stat_summary(
+#     data = newbetter_longer,
+#     aes(x = comparison, y = Diff_num, colour = comparison),
+#     fun.data = "mean_cl_boot", size = 0.01
+#   ) +
+#   theme(legend.position = "none")
+
+diff_prop2 |>
+  ggplot(aes(comparison, diff_num2, colour = participant_id), alpha = 0.2) +
+  geom_line(aes(group = participant_id, comparison), alpha = 0.5) +
+  scale_colour_discrete(name = "Participant") +
+  geom_point() +
+  labs(
+    title = "The Change in Proportion of Different Labels per Referent cacross Exposures\n(Isolated Condition)",
+    x = "1st and 2nd exposures (1-2) and 2nd and 3rd exposures (2-3)",
+    y = "Proportion of different labels",
+    colour = "Participant"
+  ) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  ) +
+  scale_x_discrete(labels = c("e1_e2" = "1-2", "e2_c1" = "2-3")) +
+  stat_summary(
+    fun.data = "mean_sdl", fun.args = list(mult = 1), geom = "pointrange", color = "red", size = 0.2
+  )
+ggsave("diff_num.png")
+```
+
+#- Connected DP practice
+
+```{r}
+#| label: connected dp practice
+
+dev_df <- tibble(
+  comparison = c(rep('e1_e2', 3), rep('e2_c1', 3)),
+  prop = c(0.2, 0.3, 0.4, 0.5, 0.8, 0.9),
+  ppt = c("1", "2", "3", "1", "2", "3"))
+
+ggplot() +
+  geom_point(
+    data = dev_df, 
+    aes(x = comparison, y = prop),
+  ) 
+
+dev_df |>
+  ggplot(aes(comparison, prop, colour = ppt),
+         alpha = 0.2 ) +
+  geom_line(aes(group = ppt),
+            alpha = 0.5) +
+  geom_point() +
+  scale_colour_discrete(name = "Participant")
+  
+  
+  
+```
+
+#- Extra: Did Solo1 re-use the same label?
+
+```{r}
+#| label: Did solo1 re-use the same label between blocks?
+solo1 <- read_csv("/Users/zsofiahauk/Desktop/diss_data/solo_data/solo_06vod7xnwc.csv")
+checksolo1 <- solo1 %>% 
+  filter(block == "check") %>% 
+  group_by(participant_id) %>% 
+  select(participant_id, block, shuffled_context2, foil2)
+expansionsolo1 <- solo1 %>% 
+  filter(block == "expansion") %>% 
+  group_by(participant_id) %>% 
+  select(participant_id, block, target, director_label) 
+new <- expansionsolo1[c('block', 'target', 'director_label')]
+new2 <- data.frame(
+                   'block' = checksolo1$block,
+                   'target' = checksolo1$shuffled_context2,
+                   'director_label' = checksolo1$foil2)
+newbetter <- rbind(new, new2) |>
+  group_by(block, target) |>
+  mutate(
+    rep = row_number()
+  ) |>
+  unite("block", block, rep)
+newbetter_wider <- newbetter |>
+  pivot_wider(names_from = block, values_from = director_label)
+newbetter_wider %>%
+  mutate(
+      e1_e2 = ifelse(expansion_1 == expansion_2, "SAME", "DIFF"),
+      e2_c1 = ifelse(expansion_2 == check_1, "SAME", "DIFF")
+  )
+```
+
+# Do dyads' re-use the same label the second time that they see one target?
+
+```{r}
+files_dyads <- list.files("/Users/zsofiahauk/Desktop/diss_data/dyad_data/", full.names = TRUE)
+dyads <- read_csv(files_dyads, id = "file")
+expansiondyads <- dyads %>% 
+  filter(block == "interaction") %>% 
+  group_by(participant_id) %>% 
+  select(participant_id, block, target, director_label) 
+new_dyads <- expansiondyads[c('participant_id', 'block', 'target', 'director_label')]
+
+new_dyads <- new_dyads |>
+  group_by(participant_id, block, target) |>
+  mutate(
+    rep = row_number()
+  ) |>
+  unite("block", block, rep)
+new_dyads
+
+newbetter_wider_dyads <- new_dyads |>
+  pivot_wider(names_from = block, values_from = director_label)
+
+newbetter_wider_dyads <- newbetter_wider_dyads |>
+  mutate(
+      i1_i2 = ifelse(interaction_1 == interaction_2, "SAME", "DIFF"),
+  )
+newbetter_wider_dyads
+
+newbetter_longer_dyads <- newbetter_wider_dyads |>
+  pivot_longer(
+    cols = c("i1_i2"),
+    names_to = "comparison",
+    values_to = "label"
+  )
+newbetter_longer_dyads
+```
+
+# Plot the DYADS' SAME and DIFF (stacked, filled bar chart)
+
+```{r}
+#| label: dyads' stacked, filled bar chart
+newbetter_longer_dyads |>
+  filter(
+    !is.na(label)
+  ) |>
+  filter(
+    participant_id %in% c("3bnro4kfnw", "b6s1xf3qgo", "gkgjghqeba", "l9vxw70eas", "y7u85qsqdc")
+  ) |>
+  ggplot(aes( x = comparison, fill = label)) +
+  geom_bar(position = "fill") +
+  facet_wrap( ~ participant_id) +
+    labs(
+    title = "The Proportion of SAME/DIFFERENT Labels per Target across Phases in the Communication Condition",
+    caption = "During the Communication Phase, if the second time that a dyad saw a target referent, the director's label for that trial matched the first label that the pair generated for that referent, then the labels were the SAME. If the labels did not match, then they were DIFFERENT.\n
+    During the Check Phase, if the label that the participant selected for that target referent matched the label that they generated for that referent the second time that they saw it, then their labels were the SAME. If the label that the participant selected for that target referent did not match the label that they generated for that referent the second time that they saw it, then the labels were DIFFERENT.",
+    x = "Between the 1st and 2nd Exposures",
+    y = "Proportion of SAME/DIFF Labels"
+  ) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  ) +
+  scale_fill_discrete(name = "Label between Phases \nfor each Target Referent",
+                      labels = c("Different", "Same")) +
+  scale_x_discrete(labels = c("i1_i2" = "1-2"))
+
+dyad_labels <- c(
+  "3bnro4kfnw" = "3bn_n8t",
+  "b6s1xf3qgo" = "b6s_lp1",
+  "gkgjghqeba" = "gkg_v1m",
+  "l9vxw70eas" = "sld_l9v",
+  "y7u85qsqdc" = "y7u_ypx"
+)
+
+newbetter_longer_dyads |>
+  filter(
+    !is.na(label)
+  ) |>
+  filter(
+    participant_id %in% c("3bnro4kfnw", "b6s1xf3qgo", "gkgjghqeba", "l9vxw70eas", "y7u85qsqdc")
+  ) |>
+  ggplot(aes( x = comparison, fill = label)) +
+  geom_bar(position = "fill") +
+  facet_wrap( ~ participant_id,
+              labeller = labeller(.rows = dyad_labels)) +
+  labs(
+    title = "The Proportions of Label Types per Referent across Exposures\n(Communication Condition)",
+    x = "1st and 2nd exposures (1-2)",
+    y = "Proportions of label types"
+  ) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  ) +
+  scale_fill_discrete(name = "Label types",
+                      labels = c("different", "same")) +
+  scale_x_discrete(labels = c("i1_i2" = "1-2"))
+# ggsave("dyads_label_types.png", path = "/Users/zsofiahauk/Desktop/")
+
+dyad_labels <- c(
+  "3bnro4kfnw" = "3bn_n8t",
+  "b6s1xf3qgo" = "b6s_lp1",
+  "gkgjghqeba" = "gkg_v1m",
+  "l9vxw70eas" = "sld_l9v",
+  "y7u85qsqdc" = "y7u_ypx"
+)
+
+newbetter_longer_dyads |>
+  filter(
+    !is.na(label)
+  ) |>
+  filter(
+    participant_id %in% c("3bnro4kfnw", "b6s1xf3qgo", "gkgjghqeba", "l9vxw70eas", "y7u85qsqdc")
+  ) |>
+  ggplot(aes( x = participant_id, fill = label)) +
+  geom_bar(position = "fill") +
+  labs(
+    title = "The Proportions of Label Types per Referent across Exposures\n(Communication Condition)",
+    x = "\nDyads",
+    y = "Proportions of label types"
+  ) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  ) +
+  scale_fill_discrete(name = "Label types",
+                      labels = c("different", "same")) +
+  scale_x_discrete(labels = dyad_labels)
+
+# ggsave("test.png", path = "/Users/zsofiahauk/Desktop/")
+```
+
+#- Pivot longer the SAME/DIFF data
+
+```{r}
+newbetter_longer_dyads <- newbetter_longer_dyads |>
+  mutate(
+    Same_num = ifelse(label == "SAME", 1, 0),
+    Diff_num = ifelse(label == "DIFF", 1, 0)
+  )
+newbetter_longer_dyads
+```
+
+#- Calculate the proportions of SAME/DIFF
+
+```{r}
+#| label: calc. dyads' proportions
+same_prop_dyads <- newbetter_longer_dyads |>
+  filter(
+    !is.na(Same_num)
+  ) |>
+  group_by(participant_id, comparison) |>
+  summarise(
+    same_prop_dyads = sum(Same_num) / n(),
+    .groups = "drop"
+  )
+same_prop_dyads
+
+diff_prop_dyads <- newbetter_longer_dyads |>
+  filter(
+    !is.na(Diff_num)
+  ) |>
+  group_by(participant_id, comparison) |>
+  summarise(
+    diff_prop_dyads = sum(Diff_num) / n(),
+    .groups = "drop"
+  )
+diff_prop_dyads
+view(diff_prop_dyads)
+```
+
+# Plot the DYADS' SAME/DIFF props (connected dot plot) LOLZ, not a connected dot plot
+
+```{r}
+same_prop_dyads |>
+  group_by(participant_id, comparison) |>
+  ggplot(aes(comparison, same_prop_dyads), alpha = 0.2) +
+  geom_line(aes(group = participant_id, comparison), alpha = 0.5) +
+  geom_point() 
+
+same_prop_dyads |>
+  # group_by(participant_id, comparison) |>
+  ggplot(aes(comparison, same_prop_dyads), alpha = 0.2) +
+    geom_dotplot(
+    binaxis = 'y', stackdir = 'center', stackratio = 1.5, dotsize = 0.5
+    ) +
+    geom_label(vjust = 0, nudge_x = 0.1, label = same_prop_dyads$participant_id) +
+    theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank()) +
+  ylim(0, 1) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  )
+
+same_prop_dyads |>
+  # group_by(participant_id, comparison) |>
+  ggplot(aes(comparison, same_prop_dyads), alpha = 0.2) +
+    geom_dotplot(
+    binaxis = 'y', stackdir = 'center', stackratio = 1.5, dotsize = 0.5
+    ) +
+  geom_text_repel(label = same_prop_dyads$participant_id) +
+    theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank()) +
+  ylim(0, 1) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  )
+```
+
+
+```{r}
+diff_prop_dyads |>
+  ggplot(aes(comparison, diff_prop_dyads), alpha = 0.2) +
+    geom_dotplot(
+    binaxis = 'y', stackdir = 'center', stackratio = 1.5, dotsize = 0.5
+    ) +
+    theme(
+      axis.text.y = element_blank(),
+      axis.ticks.y = element_blank()
+      ) +
+  ylim(0, 1) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  )
+```
+
+```{r}
+diff_prop_dyads_plot <- diff_prop_dyads |>
+  ggplot(aes(comparison, diff_prop_dyads), alpha = 0.2) +
+    geom_dotplot(
+    binaxis = 'y', stackdir = 'center', stackratio = 1.5, dotsize = 0.5
+    ) +
+  ylim(0, 1) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  ) +
+  labs(
+    title = "\nChange in Proportion of Different Labels per Referent across Exposures\n\n(Communication Condition)\n",
+    x = "\n1st and 2nd exposures (1-2)\n",
+    y = "\nProportion of different labels\n",
+    colour = "Participant"
+  ) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  ) +
+  scale_x_discrete(labels = c("i1_i2" = "1-2")) +
+  stat_summary(
+    data = newbetter_longer_dyads,
+    aes(x = comparison, y = Diff_num, colour = comparison),
+    fun.data = "mean_cl_boot", position = position_nudge(x = -0.05, y = 0)
+  ) +
+  theme(legend.position = "none")
+diff_prop_dyads_plot
+```
+
+
+```{r}
+diffnumonlyfiltered
+diffnumonlyfiltered2 <- diffnumonlyfiltered %>% 
+  select(c("participant_id", "comparison", "diff_prop"))
+diffnumonlyfiltered2
+diff_prop_dyads <- diff_prop_dyads %>% 
+  rename("diff_prop" = diff_prop_dyads)
+view(diff_prop_dyads)
+
+combined <- rbind(diffnumonlyfiltered2, diff_prop_dyads)
+combined
+view(combined)
+```
+
+```{r}
+combined_plot <- ggplot(
+  combined,
+  aes(x = comparison, y = diff_prop)
+  ) +
+  geom_dotplot(
+    binaxis = 'y', stackdir = 'center', stackratio = 1.5, dotsize = 0.5
+    ) + 
+  NULL
+```
+
+```{r}
+combined_plot2 <- ggplot(
+  combined,
+  aes(x = comparison, y = diff_prop)
+  ) +
+  geom_dotplot(
+    binaxis = 'y', stackdir = 'center', stackratio = 1.5, dotsize = 0.5
+    ) +
+  labs(
+    title = "\nChange in Proportion of Different Labels per Referent across Context-Types\n\n(by Condition)\n",
+    x = "\n1st and 2nd exposures over different context-types\n",
+    y = "\nProportion of different labels\n",
+    colour = "Participant"
+  ) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5),
+    axis.text.x = element_text(size = 10),
+  ) +
+  scale_x_discrete(labels = c("e1_e2" = "\nIsolated\n", "i1_i2" = "\nCommunication\n")) +
+  stat_summary(
+    data = newbetters2,
+    aes(x = comparison, y = Diff_num, colour = comparison),
+    fun.data = "mean_cl_boot", position = position_nudge(x = -0.05, y = 0)
+  ) +
+  theme(legend.position = "none")
+combined_plot2
+ggsave(filename = "combined_plot2.png", path = "/Users/zsofiahauk/Desktop/", width = 8, height = 5)
+```
+```{r}
+solos_filtered <- newbetter_longer %>% 
+  filter(comparison == "e1_e2")
+solos_filtered
+newbetters2 <- rbind(newbetter_longer_dyads, solos_filtered)
+newbetters2
+```
+
+
+```{r}
+everything_plot_dot3_simple_tibs
+ggsave("everything_plot_dot3_simple_tibs.png", path = "/Users/zsofiahauk/Desktop", width = 8, height = 5)
+
+diff_prop2plot <- diff_prop2|>
+  ggplot(aes(comparison, diff_prop, colour = participant_id), alpha = 0.2) +
+  geom_line(aes(group = participant_id, comparison), alpha = 0.5) +
+  scale_colour_discrete(name = "Participant") +
+  geom_point() +
+  labs(
+    title = "\nChange in Proportion of Different Labels per Referent across Exposures\n\n(Isolated Condition)\n",
+    x = "\n1st and 2nd exposures (1-2) and 2nd and 3rd exposures (2-3)\n",
+    y = "\nProportion of different labels\n",
+    colour = "Participant"
+  ) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  ) +
+  scale_x_discrete(labels = c("e1_e2" = "1-2", "e2_c1" = "2-3")) +
+  stat_summary(
+    data = newbetter_longer,
+    aes(x = comparison, y = Diff_num, colour = comparison),
+    fun.data = "mean_cl_boot", position = position_nudge(x = -0.05, y = 0)
+  ) +
+  theme(legend.position = "none")
+
+ggsave("diff_prop2plot.png", path = "/Users/zsofiahauk/Desktop", width = 8, height = 5)
+```
+
+
+```{r}
+diff_prop2plot <- diff_prop2|>
+  ggplot(aes(comparison, diff_prop, colour = participant_id), alpha = 0.2) +
+  geom_line(aes(group = participant_id, comparison), alpha = 0.5) +
+  scale_colour_discrete(name = "Participant") +
+  geom_point() +
+  labs(
+    title = "\nChange in Proportion of Different Labels per Referent across Exposures\n\n(Isolated Condition)\n",
+    x = "\n1st and 2nd exposures (1-2) and 2nd and 3rd exposures (2-3)\n",
+    y = "\nProportion of different labels\n",
+    colour = "Participant"
+  ) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  ) +
+  scale_x_discrete(labels = c("e1_e2" = "1-2", "e2_c1" = "2-3")) +
+  stat_summary(
+    data = newbetter_longer,
+    aes(x = comparison, y = Diff_num, colour = comparison),
+    fun.data = "mean_cl_boot", position = position_nudge(x = -0.05, y = 0)
+  ) +
+  theme(legend.position = "none")
+
+ggsave("diff_prop2plot.png", path = "/Users/zsofiahauk/Desktop", width = 8, height = 5)
+```
+
+```{r}
+# diff_prop_dyads |>
+#   ggplot(aes(participant_id, diff_prop_dyads, label = participant_id)) +
+#   geom_point(alpha=1) +
+#   coord_flip() +
+#   NULL
+#   labs(
+#     title = "Dyads' Communicative Success",
+#     x = "Dyads",
+#     y = "Proportion of successful trials"
+#   ) +
+#     geom_label(vjust = 0, nudge_x = 0.1) +
+#     theme(axis.text.y = element_blank(),
+#         axis.ticks.y = element_blank()) +
+#   ylim(0, 1) +
+#   theme(
+#     plot.caption = element_text(hjust = 0.5),
+#     plot.title = element_text(hjust = 0.5),
+#     plot.subtitle = element_text(hjust = 0.5)
+#   ) +
+#   coord_flip() +
+#   NULL
+```
+
+
+```{r}
+p_diff_prop_dy <- diff_prop_dyads |>
+  ggplot(aes(comparison, diff_prop_dyads, colour = participant_id), alpha = 0.2) +
+  # geom_line(aes(group = participant_id, comparison), alpha = 0.5) +
+  scale_colour_discrete(name = "Participant") +
+  geom_point() +
+  labs(
+    title = "The Change in Proportion of Different Labels per Referent cacross Exposures\n(Isolated Condition)",
+    x = "1st and 2nd exposures (1-2) and 2nd and 3rd exposures (2-3)",
+    y = "Proportion of different labels",
+    colour = "Participant"
+  ) +
+  theme(
+    plot.caption = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5)
+  ) +
+  scale_x_discrete(labels = c("e1_e2" = "1-2", "e2_c1" = "2-3")) +
+  NULL
+  coord_flip()
+# ggsave("diff_prop.png")  
+```
+
+```{r}
+# p_diff_prop_dy + p_diff_prop_dy
+# 
+# diffnumonly |>
+#   filter(comparison == "e1_e2")
+# view(diffnumonly)
+
+```
+

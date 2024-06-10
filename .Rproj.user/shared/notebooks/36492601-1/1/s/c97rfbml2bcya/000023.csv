@@ -1,0 +1,5 @@
+"0","same_prop_dyads |>"
+"0","  group_by(participant_id, comparison) |>"
+"0","  ggplot(aes(comparison, same_prop_dyads), alpha = 0.2) +"
+"0","  geom_line(aes(group = participant_id, comparison), alpha = 0.5) +"
+"0","  geom_point() "

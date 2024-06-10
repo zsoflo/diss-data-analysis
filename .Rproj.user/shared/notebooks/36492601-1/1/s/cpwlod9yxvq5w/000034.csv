@@ -1,0 +1,6 @@
+"0","diff_prop_dyads <- diff_prop_dyads %>% "
+"0","  rename(""diff_prop"" = diff_prop_dyads)"
+"0","view(diff_prop_dyads)"
+"0",""
+"0","combined <- rbind(diffnumonlyfiltered2, diff_prop_dyads)"
+"0","combined"

@@ -1,0 +1,8 @@
+"0","combined_plot <- ggplot("
+"0","  combined,"
+"0","  aes(x = comparison, y = diff_prop)"
+"0","  ) +"
+"0","  geom_dotplot("
+"0","    binaxis = 'y', stackdir = 'center', stackratio = 1.5, dotsize = 0.5"
+"0","    ) + "
+"0","  NULL"

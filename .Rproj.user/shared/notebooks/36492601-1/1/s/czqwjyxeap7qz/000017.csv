@@ -1,0 +1,3 @@
+"0","solos_filtered <- newbetter_longer %>% "
+"0","  filter(comparison == ""e1_e2"")"
+"0","solos_filtered"

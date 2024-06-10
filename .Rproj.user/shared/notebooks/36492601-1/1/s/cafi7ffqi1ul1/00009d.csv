@@ -1,0 +1,3 @@
+"0",""
+"0","diffnumonly %>% "
+"0","  summarise(mean = mean(diff_num2), n = n(), sd = sd(diff_num2))"

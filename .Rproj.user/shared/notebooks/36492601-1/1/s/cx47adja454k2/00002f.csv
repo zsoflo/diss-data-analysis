@@ -1,0 +1,8 @@
+"0",""
+"0","new_tibble <- tibble("
+"0","  dyad_names = all_dyads,"
+"0","  dyad_props = all_props, "
+"0","  dyad_totalpoints = all_totals, "
+"0","  dyad_spec = new_good_spec$y"
+"0",")"
+"0","view(new_tibble)"

@@ -1,0 +1,4 @@
+"0",""
+"0","diffnumonly <- diff_prop2 |>"
+"0","  filter(comparison == ""e1_e2"")"
+"0","diffnumonly"

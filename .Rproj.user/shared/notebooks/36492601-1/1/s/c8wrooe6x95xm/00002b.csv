@@ -1,0 +1,8 @@
+"0",""
+"0","prop_df2 <- tibble("
+"0","  pair = c('y7u', 'ypx', 'gkg', 'v1m', 'b6s', 'lp1', '3bn', 'n8t', 'sld', 'l9v'),"
+"0","  prop = c(y7u_ypx_prop, y7u_ypx_prop, gkg_v1m_prop, gkg_v1m_prop, b6s_lp1_prop, b6s_lp1_prop, bn_n8t_prop, bn_n8t_prop, sld_l9v_prop, sld_l9v_prop),"
+"0","  labels = c(pair),"
+"0","  type = c('dyad', 'dyad', 'dyad', 'dyad', 'dyad', 'dyad', 'dyad', 'dyad', 'dyad', 'dyad'),"
+"0",")"
+"0","prop_df2"

@@ -1,0 +1,3 @@
+"0","new_good_spec  <- good_spec  %>% "
+"0","  arrange(factor(rowname, levels = c(""y7u85qsqdc"", ""l9vxw70eas"", ""b6s1xf3qgo"", ""gkgjghqeba"", ""3bnro4kfnw"")))"
+"0","new_good_spec"

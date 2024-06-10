@@ -1,0 +1,5 @@
+"0",""
+"0","new_data_tibble_b6s <- di_b6s1xf3qgo %>% "
+"0","  select(target, director_label)"
+"0",""
+"0","new_data_tibble_b6s"

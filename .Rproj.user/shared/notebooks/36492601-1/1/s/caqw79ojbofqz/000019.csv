@@ -1,0 +1,4 @@
+"0",""
+"0","diffnumonlyfiltered <- diffnumonly %>% "
+"0","  filter(comparison == ""e1_e2"")"
+"0","diffnumonlyfiltered"

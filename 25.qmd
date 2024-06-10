@@ -1,0 +1,73 @@
+---
+title: "2"
+format: html
+---
+
+## Libraries
+```{r}
+library(tidyverse)
+install.packages("stringr")
+library("stringr")
+```
+
+
+## Dyad 1
+```{r}
+sld <- read_csv("/Users/zsofiahauk/Desktop/diss_data/dyad_data/di_sldmscswrq.csv")
+
+sld_df <- tibble(
+  target = sld$target,
+  foil1 = sld$foil1,
+  foil2 = sld$foil2,
+  foil3 = sld$foil3,
+  label = sld$director_label
+)
+
+sld_df <- sld_df %>% 
+  select(target, foil1, foil2, foil3, label) %>% 
+  group_by(target)
+
+filter(sld_df, target == "yellow_blob") |>
+  select(target, foil1, foil2, foil3, label)
+
+```
+## Dyad 4
+```{r}
+b6s <- read_csv("/Users/zsofiahauk/Desktop/diss_data/dyad_data/di_b6s1xf3qgo.csv")
+
+b6s_df <- tibble(
+  target = b6s$target,
+  foil1 = b6s$foil1,
+  foil2 = b6s$foil2,
+  foil3 = b6s$foil3,
+  label = b6s$director_label
+)
+
+b6s_df <- b6s_df %>%
+  select(target, foil1, foil2, foil3, label) %>% 
+  group_by(target) %>% 
+  view()
+  
+
+filter(b6s_df, target == "blue_rect") |>
+  select(target, foil1, foil2, foil3, label)
+
+d4 <- b6s_df[str_detect(b6s_df$target, "blue"), ] %>% 
+  group_by(target) %>% 
+  view()
+```
+
+## DYAD 5
+```{r}
+gkg <- read_csv("/Users/zsofiahauk/Desktop/diss_data/dyad_data/di_gkgjghqeba.csv")
+gkg_df <- tibble(
+  target = gkg$target,
+  foil1 = gkg$foil1,
+  foil2 = gkg$foil2,
+  foil3 = gkg$foil3,
+  label = gkg$director_label
+)
+filter(gkg_df, target == "blue_rect") |>
+  select(target, foil1, foil2, foil3, label)
+```
+

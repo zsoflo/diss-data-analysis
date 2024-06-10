@@ -1,0 +1,2 @@
+"0","dyad_counts_tib_iso %>% "
+"0","  summarise(mean = mean(cats), n = n(), sd = sd(cats))"

@@ -1,0 +1,372 @@
+---
+title: "2"
+format: html
+---
+
+## Checking and mapping the labels for each dyad
+
+# 1. di_sldmscswrq and di_l9vxw70eas
+```{r}
+#| label: extract the labels between di_sldmscswrq and di_l9vxw70eas.
+
+di_sldmscswrq
+
+di_sldmscswrq |> distinct(director_label) |> count()
+
+new_data_tibble_sld <- di_sldmscswrq %>% 
+  select(target, director_label)
+
+new_data_tibble_sld
+
+filter(new_data_tibble_sld, target == "blue_rect")
+filter(new_data_tibble_sld, target == "blue_star")
+filter(new_data_tibble_sld, target == "blue_oval")
+filter(new_data_tibble_sld, target == "blue_blob")
+
+filter(new_data_tibble_sld, target == "grey_rect")
+filter(new_data_tibble_sld, target == "grey_star")
+filter(new_data_tibble_sld, target == "grey_oval")
+filter(new_data_tibble_sld, target == "grey_blob")
+
+filter(new_data_tibble_sld, target == "red_rect")
+filter(new_data_tibble_sld, target == "red_star")
+filter(new_data_tibble_sld, target == "red_oval")
+filter(new_data_tibble_sld, target == "red_blob")
+
+filter(new_data_tibble_sld, target == "yellow_rect")
+filter(new_data_tibble_sld, target == "yellow_star")
+filter(new_data_tibble_sld, target == "yellow_oval")
+filter(new_data_tibble_sld, target == "yellow_blob")
+
+di_l9vxw70eas
+
+new_data_tibble_l9v <- di_l9vxw70eas %>% 
+  select(target, director_label)
+
+new_data_tibble_l9v
+
+filter(new_data_tibble_l9v, target == "blue_rect")
+filter(new_data_tibble_l9v, target == "blue_star")
+filter(new_data_tibble_l9v, target == "blue_oval")
+filter(new_data_tibble_l9v, target == "blue_blob")
+
+filter(new_data_tibble_l9v, target == "grey_rect")
+filter(new_data_tibble_l9v, target == "grey_star")
+filter(new_data_tibble_l9v, target == "grey_oval")
+filter(new_data_tibble_l9v, target == "grey_blob")
+
+filter(new_data_tibble_l9v, target == "red_rect")
+filter(new_data_tibble_l9v, target == "red_star")
+filter(new_data_tibble_l9v, target == "red_oval")
+filter(new_data_tibble_l9v, target == "red_blob")
+
+filter(new_data_tibble_l9v, target == "yellow_rect")
+filter(new_data_tibble_l9v, target == "yellow_star")
+filter(new_data_tibble_l9v, target == "yellow_oval")
+filter(new_data_tibble_l9v, target == "yellow_blob")
+```
+
+# 2. di_3bnro4kfnw and di_n8tf4dj060
+```{r}
+#| label: extract the labels between di_3bnro4kfnw and di_n8tf4dj060.
+
+di_3bnro4kfnw
+
+di_3bnro4kfnw |> distinct(director_label) |> count()
+
+new_data_tibble_3bn <- di_3bnro4kfnw %>% 
+  select(target, director_label)
+
+new_data_tibble_3bn
+
+filter(new_data_tibble_3bn, target == "blue_rect")
+filter(new_data_tibble_3bn, target == "blue_star")
+filter(new_data_tibble_3bn, target == "blue_oval")
+filter(new_data_tibble_3bn, target == "blue_blob")
+
+filter(new_data_tibble_3bn, target == "grey_rect")
+filter(new_data_tibble_3bn, target == "grey_star")
+filter(new_data_tibble_3bn, target == "grey_oval")
+filter(new_data_tibble_3bn, target == "grey_blob")
+
+filter(new_data_tibble_3bn, target == "red_rect")
+filter(new_data_tibble_3bn, target == "red_star")
+filter(new_data_tibble_3bn, target == "red_oval")
+filter(new_data_tibble_3bn, target == "red_blob")
+
+filter(new_data_tibble_3bn, target == "yellow_rect")
+filter(new_data_tibble_3bn, target == "yellow_star")
+filter(new_data_tibble_3bn, target == "yellow_oval")
+filter(new_data_tibble_3bn, target == "yellow_blob")
+
+di_n8tf4dj060
+
+new_data_tibble_n8t <- di_n8tf4dj060 %>% 
+  select(target, director_label)
+
+new_data_tibble_n8t
+
+filter(new_data_tibble_n8t, target == "blue_rect")
+filter(new_data_tibble_n8t, target == "blue_star")
+filter(new_data_tibble_n8t, target == "blue_oval")
+filter(new_data_tibble_n8t, target == "blue_blob")
+
+filter(new_data_tibble_n8t, target == "grey_rect")
+filter(new_data_tibble_n8t, target == "grey_star")
+filter(new_data_tibble_n8t, target == "grey_oval")
+filter(new_data_tibble_n8t, target == "grey_blob")
+
+filter(new_data_tibble_n8t, target == "red_rect")
+filter(new_data_tibble_n8t, target == "red_star")
+filter(new_data_tibble_n8t, target == "red_oval")
+filter(new_data_tibble_n8t, target == "red_blob")
+
+filter(new_data_tibble_n8t, target == "yellow_rect")
+filter(new_data_tibble_n8t, target == "yellow_star")
+filter(new_data_tibble_n8t, target == "yellow_oval")
+filter(new_data_tibble_n8t, target == "yellow_blob")
+```
+
+# 3. di_8s7cyryjl0 and di_bamzqks24l
+```{r}
+#| label: extract the labels between di_8s7cyryjl0 and di_bamzqks24l.
+
+di_8s7cyryjl0
+
+di_8s7cyryjl0 |> distinct(director_label) |> count()
+
+new_data_tibble_8s7 <- di_8s7cyryjl0 %>% 
+  select(target, director_label)
+
+new_data_tibble_8s7
+
+filter(new_data_tibble_8s7, target == "blue_rect")
+filter(new_data_tibble_8s7, target == "blue_star")
+filter(new_data_tibble_8s7, target == "blue_oval")
+filter(new_data_tibble_8s7, target == "blue_blob")
+
+filter(new_data_tibble_8s7, target == "grey_rect")
+filter(new_data_tibble_8s7, target == "grey_star")
+filter(new_data_tibble_8s7, target == "grey_oval")
+filter(new_data_tibble_8s7, target == "grey_blob")
+
+filter(new_data_tibble_8s7, target == "red_rect")
+filter(new_data_tibble_8s7, target == "red_star")
+filter(new_data_tibble_8s7, target == "red_oval")
+filter(new_data_tibble_8s7, target == "red_blob")
+
+filter(new_data_tibble_8s7, target == "yellow_rect")
+filter(new_data_tibble_8s7, target == "yellow_star")
+filter(new_data_tibble_8s7, target == "yellow_oval")
+filter(new_data_tibble_8s7, target == "yellow_blob")
+
+di_bamzqks24l
+
+new_data_tibble_bam <- di_bamzqks24l %>% 
+  select(target, director_label)
+
+new_data_tibble_bam
+
+filter(new_data_tibble_bam, target == "blue_rect")
+filter(new_data_tibble_bam, target == "blue_star")
+filter(new_data_tibble_bam, target == "blue_oval")
+filter(new_data_tibble_bam, target == "blue_blob")
+
+filter(new_data_tibble_bam, target == "grey_rect")
+filter(new_data_tibble_bam, target == "grey_star")
+filter(new_data_tibble_bam, target == "grey_oval")
+filter(new_data_tibble_bam, target == "grey_blob")
+
+filter(new_data_tibble_bam, target == "red_rect")
+filter(new_data_tibble_bam, target == "red_star")
+filter(new_data_tibble_bam, target == "red_oval")
+filter(new_data_tibble_bam, target == "red_blob")
+
+filter(new_data_tibble_bam, target == "yellow_rect")
+filter(new_data_tibble_bam, target == "yellow_star")
+filter(new_data_tibble_bam, target == "yellow_oval")
+filter(new_data_tibble_bam, target == "yellow_blob")
+```
+
+# 4. di_b6s1xf3qgo and di_lp1je60a2r
+```{r}
+#| label: extract the labels between di_b6s1xf3qgo and di_lp1je60a2r.
+
+di_b6s1xf3qgo
+
+di_b6s1xf3qgo |> distinct(director_label) |> count()
+
+new_data_tibble_b6s <- di_b6s1xf3qgo %>% 
+  select(target, director_label)
+
+new_data_tibble_b6s
+
+filter(new_data_tibble_b6s, target == "blue_rect")
+filter(new_data_tibble_b6s, target == "blue_star")
+filter(new_data_tibble_b6s, target == "blue_oval")
+filter(new_data_tibble_b6s, target == "blue_blob")
+
+filter(new_data_tibble_b6s, target == "grey_rect")
+filter(new_data_tibble_b6s, target == "grey_star")
+filter(new_data_tibble_b6s, target == "grey_oval")
+filter(new_data_tibble_b6s, target == "grey_blob")
+
+filter(new_data_tibble_b6s, target == "red_rect")
+filter(new_data_tibble_b6s, target == "red_star")
+filter(new_data_tibble_b6s, target == "red_oval")
+filter(new_data_tibble_b6s, target == "red_blob")
+
+filter(new_data_tibble_b6s, target == "yellow_rect")
+filter(new_data_tibble_b6s, target == "yellow_star")
+filter(new_data_tibble_b6s, target == "yellow_oval")
+filter(new_data_tibble_b6s, target == "yellow_blob")
+
+di_lp1je60a2r
+
+new_data_tibble_lp1 <- di_lp1je60a2r %>% 
+  select(target, director_label)
+
+new_data_tibble_lp1
+
+filter(new_data_tibble_lp1, target == "blue_rect")
+filter(new_data_tibble_lp1, target == "blue_star")
+filter(new_data_tibble_lp1, target == "blue_oval")
+filter(new_data_tibble_lp1, target == "blue_blob")
+
+filter(new_data_tibble_lp1, target == "grey_rect")
+filter(new_data_tibble_lp1, target == "grey_star")
+filter(new_data_tibble_lp1, target == "grey_oval")
+filter(new_data_tibble_lp1, target == "grey_blob")
+
+filter(new_data_tibble_lp1, target == "red_rect")
+filter(new_data_tibble_lp1, target == "red_star")
+filter(new_data_tibble_lp1, target == "red_oval")
+filter(new_data_tibble_lp1, target == "red_blob")
+
+filter(new_data_tibble_lp1, target == "yellow_rect")
+filter(new_data_tibble_lp1, target == "yellow_star")
+filter(new_data_tibble_lp1, target == "yellow_oval")
+filter(new_data_tibble_lp1, target == "yellow_blob")
+```
+
+# 5. di_gkgjghqeba and di_v1mkglj77m
+```{r}
+#| label: extract the labels between di_gkgjghqeba and di_v1mkglj77m.
+
+di_gkgjghqeba
+
+di_gkgjghqeba |> distinct(director_label) |> count()
+
+new_data_tibble_gkg <- di_gkgjghqeba %>% 
+  select(target, director_label)
+
+new_data_tibble_gkg
+
+filter(new_data_tibble_gkg, target == "blue_rect")
+filter(new_data_tibble_gkg, target == "blue_star")
+filter(new_data_tibble_gkg, target == "blue_oval")
+filter(new_data_tibble_gkg, target == "blue_blob")
+
+filter(new_data_tibble_gkg, target == "grey_rect")
+filter(new_data_tibble_gkg, target == "grey_star")
+filter(new_data_tibble_gkg, target == "grey_oval")
+filter(new_data_tibble_gkg, target == "grey_blob")
+
+filter(new_data_tibble_gkg, target == "red_rect")
+filter(new_data_tibble_gkg, target == "red_star")
+filter(new_data_tibble_gkg, target == "red_oval")
+filter(new_data_tibble_gkg, target == "red_blob")
+
+filter(new_data_tibble_gkg, target == "yellow_rect")
+filter(new_data_tibble_gkg, target == "yellow_star")
+filter(new_data_tibble_gkg, target == "yellow_oval")
+filter(new_data_tibble_gkg, target == "yellow_blob")
+
+di_v1mkglj77m
+
+new_data_tibble_v1m <- di_v1mkglj77m %>% 
+  select(target, director_label)
+
+new_data_tibble_v1m
+
+filter(new_data_tibble_v1m, target == "blue_rect")
+filter(new_data_tibble_v1m, target == "blue_star")
+filter(new_data_tibble_v1m, target == "blue_oval")
+filter(new_data_tibble_v1m, target == "blue_blob")
+
+filter(new_data_tibble_v1m, target == "grey_rect")
+filter(new_data_tibble_v1m, target == "grey_star")
+filter(new_data_tibble_v1m, target == "grey_oval")
+filter(new_data_tibble_v1m, target == "grey_blob")
+
+filter(new_data_tibble_v1m, target == "red_rect")
+filter(new_data_tibble_v1m, target == "red_star")
+filter(new_data_tibble_v1m, target == "red_oval")
+filter(new_data_tibble_v1m, target == "red_blob")
+
+filter(new_data_tibble_v1m, target == "yellow_rect")
+filter(new_data_tibble_v1m, target == "yellow_star")
+filter(new_data_tibble_v1m, target == "yellow_oval")
+filter(new_data_tibble_v1m, target == "yellow_blob")
+```
+
+# 6. di_y7u85qsqdc and di_ypxea5q8fo
+```{r}
+#| label: extract the labels between di_y7u85qsqdc and di_ypxea5q8fo.
+
+di_y7u85qsqdc
+
+di_y7u85qsqdc |> distinct(director_label) |> count()
+
+new_data_tibble_y7u <- di_y7u85qsqdc %>% 
+  select(target, director_label)
+
+new_data_tibble_y7u
+
+filter(new_data_tibble_y7u, target == "blue_rect")
+filter(new_data_tibble_y7u, target == "blue_star")
+filter(new_data_tibble_y7u, target == "blue_oval")
+filter(new_data_tibble_y7u, target == "blue_blob")
+
+filter(new_data_tibble_y7u, target == "grey_rect")
+filter(new_data_tibble_y7u, target == "grey_star")
+filter(new_data_tibble_y7u, target == "grey_oval")
+filter(new_data_tibble_y7u, target == "grey_blob")
+
+filter(new_data_tibble_y7u, target == "red_rect")
+filter(new_data_tibble_y7u, target == "red_star")
+filter(new_data_tibble_y7u, target == "red_oval")
+filter(new_data_tibble_y7u, target == "red_blob")
+
+filter(new_data_tibble_y7u, target == "yellow_rect")
+filter(new_data_tibble_y7u, target == "yellow_star")
+filter(new_data_tibble_y7u, target == "yellow_oval")
+filter(new_data_tibble_y7u, target == "yellow_blob")
+
+di_ypxea5q8fo
+
+new_data_tibble_ypx <- di_ypxea5q8fo %>% 
+  select(target, director_label)
+
+new_data_tibble_ypx
+
+filter(new_data_tibble_ypx, target == "blue_rect")
+filter(new_data_tibble_ypx, target == "blue_star")
+filter(new_data_tibble_ypx, target == "blue_oval")
+filter(new_data_tibble_ypx, target == "blue_blob")
+
+filter(new_data_tibble_ypx, target == "grey_rect")
+filter(new_data_tibble_ypx, target == "grey_star")
+filter(new_data_tibble_ypx, target == "grey_oval")
+filter(new_data_tibble_ypx, target == "grey_blob")
+
+filter(new_data_tibble_ypx, target == "red_rect")
+filter(new_data_tibble_ypx, target == "red_star")
+filter(new_data_tibble_ypx, target == "red_oval")
+filter(new_data_tibble_ypx, target == "red_blob")
+
+filter(new_data_tibble_ypx, target == "yellow_rect")
+filter(new_data_tibble_ypx, target == "yellow_star")
+filter(new_data_tibble_ypx, target == "yellow_oval")
+filter(new_data_tibble_ypx, target == "yellow_blob")
+```

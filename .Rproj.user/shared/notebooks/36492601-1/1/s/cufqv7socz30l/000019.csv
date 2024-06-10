@@ -1,0 +1,8 @@
+"0",""
+"0","dev_df |>"
+"0","  ggplot(aes(comparison, prop, colour = ppt),"
+"0","         alpha = 0.2 ) +"
+"0","  geom_line(aes(group = ppt),"
+"0","            alpha = 0.5) +"
+"0","  geom_point() +"
+"0","  scale_colour_discrete(name = ""Participant"")"

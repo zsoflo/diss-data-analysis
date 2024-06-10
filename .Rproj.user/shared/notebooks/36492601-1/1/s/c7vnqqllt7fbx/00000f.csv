@@ -1,0 +1,8 @@
+"0","more2 <- tibble("
+"0","  pair = c('y7u', 'ypx', 'gkg', 'v1m', 'b6s', 'lp1', '3bn', 'n8t', 'sld', 'l9v'),"
+"0","  prop = c(y7u_ypx_prop, y7u_ypx_prop, gkg_v1m_prop, gkg_v1m_prop, b6s_lp1_prop, b6s_lp1_prop, bn_n8t_prop, bn_n8t_prop, sld_l9v_prop, sld_l9v_prop),"
+"0","  cats = c(4, 4, 27, 27, 16, 16, 18, 18, 19, 19),"
+"0","  type = c('dyads', 'dyads','dyads', 'dyads', 'dyads', 'dyads', 'dyads','dyads', 'dyads', 'dyads'),"
+"0","  totals = c(20, 20, 10, 10, 32, 32, 25, 25, 31, 31)"
+"0",")"
+"0","view(more2)"

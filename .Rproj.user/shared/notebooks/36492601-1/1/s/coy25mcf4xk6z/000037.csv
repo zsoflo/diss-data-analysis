@@ -1,0 +1,7 @@
+"0",""
+"0","totals2 <- tibble("
+"0","  pair = c('y7u', 'ypx', 'gkg', 'v1m', 'b6s', 'lp1', '3bn', 'n8t', 'sld', 'l9v'),"
+"0","  total = c(y7u_ypx_total, y7u_ypx_total, gkg_v1m_total, gkg_v1m_total, b6s_lp1_total, b6s_lp1_total, bn_n8t_total, bn_n8t_total, sld_l9v_total, sld_l9v_total),"
+"0","  type = c('dyad', 'dyad', 'dyad', 'dyad', 'dyad', 'dyad', 'dyad', 'dyad', 'dyad', 'dyad')"
+"0",")"
+"0","totals2"

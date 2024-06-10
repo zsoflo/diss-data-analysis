@@ -1,0 +1,7 @@
+"0",""
+"0","dyad_plot_tib <- ggplot("
+"0","  data = dyad_counts_tib_iso,"
+"0","  mapping = aes(x = dyad_counts_tib_iso$part, y = dyad_counts_tib_iso$cats)"
+"0",") +"
+"0","  geom_point()"
+"0","dyad_plot_tib"

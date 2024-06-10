@@ -1,0 +1,44 @@
+"0","simplegraph25 <- ggplot(data = new_tibble) +"
+"0","  geom_point(mapping = aes(x = dyad_totalpoints, y = dyad_spec, colour = dyad_names)) +"
+"0","  labs("
+"0","    title = ""\nCommunicative Success and Specificity\n"","
+"0","    x = ""\nCollected points (x/32)\n"","
+"0","    y = ""\nSpecificity\n"","
+"0","    colour = ""Dyads"""
+"0","  ) +"
+"0","  theme("
+"0","    plot.caption = element_text(hjust = 0.5),"
+"0","    plot.title = element_text(hjust = 0.5),"
+"0","    plot.subtitle = element_text(hjust = 0.5)"
+"0","  ) +"
+"0","  NULL"
+"0","  coord_flip()"
+"1","<ggproto object: Class CoordFlip, CoordCartesian, Coord, gg>
+    aspect: function
+    backtransform_range: function
+    clip: on
+    default: FALSE
+    distance: function
+    expand: TRUE
+    is_free: function
+    is_linear: function
+    labels: function
+    limits: list
+    modify_scales: function
+    range: function
+    render_axis_h: function
+    render_axis_v: function
+    render_bg: function
+    render_fg: function
+    setup_data: function
+    setup_layout: function
+    setup_panel_guides: function
+    setup_panel_params: function
+    setup_params: function
+    train_panel_guides: function
+    transform: function
+    super:  <ggproto object: Class CoordFlip, CoordCartesian, Coord, gg>"
+"1",""
+"1","
+"
+"0","simplegraph25"
